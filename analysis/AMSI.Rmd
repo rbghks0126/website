@@ -1,29 +1,35 @@
 ---
 title: "AMSI"
-output:
-  workflowr::wflow_html:
-    toc: false
-editor_options:
-  chunk_output_type: console
+author: "Gyu Hwan Park"
+date: "30 December 2020"
+output: html_document
 ---
 
 # Project Description
-d
 
-# Documents
-f
+This page documents my progress for the research project **'Variaitonal Inference for Bayesian Nonnegative Matrix Factorization'**. This research project was carried out under the AMSI Vacation Scholarship Program, supervised by Dr. Heejung Shim at the University of Melbourne.
+
+# Outline
+
+* [Research Proposal](VI_proposal.pdf)
+
 
 # Derivations
-g
+
+* Coming soon
 
 # Implementation
-h
 
-# Resources
-r
+* Coming soon
+
+
+# Paper Summaries
 
 ## VI NMF
-q
+
+* [Variational Inference: A Review for Statisticians]
+
 
 ## Exponential Family
-qq
+
+* Coming soon
