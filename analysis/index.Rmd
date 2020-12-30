@@ -9,3 +9,6 @@ editor_options:
 ---
 
 Welcome to my research website!
+
+
+Click on this [link](testing.html) to see my testing example.

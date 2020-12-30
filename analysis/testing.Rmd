@@ -1,0 +1,34 @@
+---
+title: "testing"
+author: "GyuHwan Park"
+date: "30 December 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Testing
+
+We model the observed data using a mixture of three binomial distributions. We assume the observations $X_1, X_2,..., X_{300}$ are independent to each other, and each $X_i$ follows this mixture model:,
+    \[
+    Z_i \sim \mbox{categorical }(\pi_1, \pi_2, 1-\pi_1-\pi_2),
+    \]
+    \[
+    \begin{aligned}
+    X_i | Z_i = 1 &\sim \mbox{Binomial}(20, p_1),\\
+    X_i | Z_i = 2 &\sim \mbox{Binomial}(20, p_2),\\
+    X_i | Z_i = 3 &\sim \mbox{Binomial}(20, p_3).
+    \end{aligned}
+    \]
+    The binomial distribution has probability mass function (for fixed 20 trials):
+    \[
+    f(x;p) = {20\choose x} p^x (1-p)^{20-x}.
+    \]
+    
+We aim to obtain MLE of parameters $\theta = (\pi_1, \pi_2, p_1, p_2, p_3)$ using the EM algorithm.
+
+
+#### (a) Derive the expectation of the complete log-likelihood.
+
