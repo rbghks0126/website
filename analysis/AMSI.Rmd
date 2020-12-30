@@ -1,0 +1,29 @@
+---
+title: "AMSI"
+output:
+  workflowr::wflow_html:
+    toc: false
+editor_options:
+  chunk_output_type: console
+---
+
+# Project Description
+d
+
+# Documents
+f
+
+# Derivations
+g
+
+# Implementation
+h
+
+# Resources
+r
+
+## VI NMF
+q
+
+## Exponential Family
+qq
