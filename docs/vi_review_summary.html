@@ -520,16 +520,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrbghks0126websitetreea3b2007956ba63814da2fbb8cf124ff72b0b20f3targetblanka3b2007a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rbghks0126/website/tree/a3b2007956ba63814da2fbb8cf124ff72b0b20f3" target="_blank">a3b2007</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrbghks0126websitetree8841b3a1633960f276f60f0e5824a7f8900eb5fbtargetblank8841b3aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rbghks0126/website/tree/8841b3a1633960f276f60f0e5824a7f8900eb5fb" target="_blank">8841b3a</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrbghks0126websitetreea3b2007956ba63814da2fbb8cf124ff72b0b20f3targetblanka3b2007a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrbghks0126websitetree8841b3a1633960f276f60f0e5824a7f8900eb5fbtargetblank8841b3aa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rbghks0126/website/tree/a3b2007956ba63814da2fbb8cf124ff72b0b20f3" target="_blank">a3b2007</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rbghks0126/website/tree/8841b3a1633960f276f60f0e5824a7f8900eb5fb" target="_blank">8841b3a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -576,6 +576,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rbghks0126/website/blob/8841b3a1633960f276f60f0e5824a7f8900eb5fb/analysis/vi_review_summary.Rmd" target="_blank">8841b3a</a>
+</td>
+<td>
+rbghks0126
+</td>
+<td>
+2020-12-31
+</td>
+<td>
+add CAVI to vi_review_summary
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rbghks0126/website/45b8de2d87f3786f412ab578c54df01898b4ff89/docs/vi_review_summary.html" target="_blank">45b8de2</a>
+</td>
+<td>
+rbghks0126
+</td>
+<td>
+2020-12-31
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -688,7 +722,24 @@ Add VI review summary
 <li>One of the most common/simplest algorithms for solving the ELBO optimization problem.</li>
 <li>CAVI iteratively optimizes each factor of the mean-field variational density, while holding others fixed.</li>
 <li>Climbs the ELBO to a local optimum.</li>
-<li>We optimize/update each variational factor according to the following rule: <span class="math display">\[ q^*_j(z_j) \prop  \]</span></li>
+<li>We optimize/update each variational factor according to the following rule: <span class="math display">\[ q^*_j(z_j) \propto \text{exp } [\mathbb{E}_{-j}[\text{log }p(z_j|\textbf{z}_{-j}, \textbf{x})]]  \]</span> which comes from <span class="math display">\[q^*_j(z_j) \propto \text{exp } [\mathbb{E}_{-j}[\text{log }p(z_j, \textbf{z}_{-j}, \textbf{x})]]\]</span> where the expectation is taken with respect to currently fixed variational density over <span class="math inline">\(\textbf{z}_{-j}\)</span>, i.e. <span class="math inline">\(\Pi_{l\neq j}q_l(z_l)\)</span>.</li>
+<li>See paper’s equation (19) for derivation.</li>
+</ul>
+<div id="pseudo-algorithm-for-cavi" class="section level3">
+<h3>Pseudo-algorithm for CAVI</h3>
+<div class="figure">
+<img src="vi_review_cavi.jpg" alt="" />
+<p class="caption">CAVI algorithm</p>
+</div>
+<ul>
+<li>In the update steps for CAVI, we can explicitly identify the form of the distribution of <span class="math inline">\(q_j(z_j)\)</span> usually (e.g. binomial, poisson, normal, etc.) when we are working with exponential families and conditionally conjugate models. This makes the update steps easy, as we know the explicit update form of the variational parameters in each iteration.</li>
+</ul>
+</div>
+<div id="cavi-worked-example" class="section level3">
+<h3>CAVI worked example</h3>
+<ul>
+<li>We apply CAVI to a simple mixture of Gaussians, with K mixture components and n real-valied data points <span class="math inline">\(x_{1:n}\)</span>. The latent variables are K real-valued mean parameters <span class="math inline">\(\textbf{\mu}=\mu_{1:k}\)</span> and n latent-class assignments <span class="math inline">\(\textbf{c}=c_{1:n}\)</span>, where <span class="math inline">\(c_i\)</span> is an indicator (one-hot) K-vector.</li>
+<li>Derivations of the ELBO, and variational updates for the cluster assignment <span class="math inline">\(c_i\)</span> and k-th mixture component <span class="math inline">\(\mu_k\)</span> is shown <a href="vi_review_cavi_derivation.pdf">here</a>.</li>
 </ul>
 <br>
 <p>
@@ -725,6 +776,7 @@ loaded via a namespace (and not attached):
 [21] vctrs_0.3.5     promises_1.1.1  fs_1.5.0        glue_1.4.2     
 [25] evaluate_0.14   rmarkdown_2.6   stringi_1.5.3   compiler_4.0.2 
 [29] pillar_1.4.7    httpuv_1.5.4    pkgconfig_2.0.3</code></pre>
+</div>
 </div>
 </div>
 </div>
