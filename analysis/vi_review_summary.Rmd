@@ -79,4 +79,18 @@ By above equation, maximizing the ELBO (Evidence Lower Bound) is equivalent to m
 * CAVI iteratively optimizes each factor of the mean-field variational density, while holding others fixed.
 * Climbs the ELBO to a local optimum.
 * We optimize/update each variational factor according to the following rule:
-$$ q^*_j(z_j) \prop  $$
+$$ q^*_j(z_j) \propto \text{exp } [\mathbb{E}_{-j}[\text{log }p(z_j|\textbf{z}_{-j}, \textbf{x})]]  $$
+which comes from
+$$q^*_j(z_j) \propto \text{exp } [\mathbb{E}_{-j}[\text{log }p(z_j, \textbf{z}_{-j}, \textbf{x})]]$$
+where the expectation is taken with respect to currently fixed variational density over $\textbf{z}_{-j}$, i.e. $\Pi_{l\neq j}q_l(z_l)$.
+* See paper's equation (19) for derivation.
+
+### Pseudo-algorithm for CAVI
+![CAVI algorithm](vi_review_cavi.jpg)
+
+* In the update steps for CAVI, we can explicitly identify the form of the distribution of $q_j(z_j)$ usually (e.g. binomial, poisson, normal, etc.) when we are working with exponential families and conditionally conjugate models. This makes the update steps easy, as we know the explicit update form of the variational parameters in each iteration.
+
+### CAVI worked example
+
+* We apply CAVI to a simple mixture of Gaussians, with K mixture components and n real-valied data points $x_{1:n}$. The latent variables are K real-valued mean parameters $\textbf{\mu}=\mu_{1:k}$ and n latent-class assignments $\textbf{c}=c_{1:n}$, where $c_i$ is an indicator (one-hot) K-vector.
+* Derivations of the ELBO, and variational updates for the cluster assignment $c_i$ and k-th mixture component $\mu_k$ is shown [here](vi_review_cavi_derivation.pdf).
