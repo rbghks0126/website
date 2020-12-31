@@ -11,7 +11,7 @@ This page documents my progress for the research project **'Variaitonal Inferenc
 
 # Outline
 
-* [Research Proposal](VI_proposal.pdf)
+* [Research Proposal](assets/VI_proposal.pdf)
 
 
 # Derivations

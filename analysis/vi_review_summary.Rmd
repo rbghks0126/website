@@ -86,11 +86,11 @@ where the expectation is taken with respect to currently fixed variational densi
 * See paper's equation (19) for derivation.
 
 ### Pseudo-algorithm for CAVI
-![](assets/vi_review_cavi.jpg)
+![](assets/vi_review_cavi.JPG)
 
 * In the update steps for CAVI, we can explicitly identify the form of the distribution of $q_j(z_j)$ usually (e.g. binomial, poisson, normal, etc.) when we are working with exponential families and conditionally conjugate models. This makes the update steps easy, as we know the explicit update form of the variational parameters in each iteration.
 
 ### CAVI worked example
 
 * We apply CAVI to a simple mixture of Gaussians, with K mixture components and n real-valied data points $x_{1:n}$. The latent variables are K real-valued mean parameters $\boldsymbol{\mu}=\mu_{1:k}$ and n latent-class assignments $\textbf{c}=c_{1:n}$, where $c_i$ is an indicator (one-hot) K-vector.
-* Derivations of the ELBO, and variational updates for the cluster assignment $c_i$ and k-th mixture component $\mu_k$ is shown [here](vi_review_cavi_derivation.pdf).
+* Derivations of the ELBO, and variational updates for the cluster assignment $c_i$ and k-th mixture component $\mu_k$ is shown [here](assets/vi_review_cavi_derivation.pdf).
