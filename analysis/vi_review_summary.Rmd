@@ -1,0 +1,82 @@
+---
+title: "Variational Inference: Review - Summary"
+author: "Gyu Hwan Park"
+date: "30 December 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+* Core problem in modern Bayesian Statistics is to approximate difficult-to-compute (often intractable) probability densities (posterior).
+* Traditionally, we have used Markov Chain Monte Carlo (MCMC) sampling methods, which constructs an ergodic Markov chain on the latent variables $\textbf{z}$ whose stationary distribution is the posterior $p(\textbf{z}|\textbf{x})$.
+
+# Variational Inference
+
+* **Variational Inference** (VI) is a method from Machine Learning that aims to approximate probability densities.
+    * VI is used in Bayesian Statistics to approximate the posterior densities, as an alternative to traditional MCMC.
+        1. Posit a **family** of approximate densities Q.
+        2. Find a member of this family that minimizes the **Kullback-Leiber (KL) divergence** to the exact posterior.
+        $$q^*(\textbf{z}) = \text{argmin}_{q(\textbf{z}) \in Q} \: KL(q(\textbf{z}) || p(\textbf{z}|\textbf{x}))$$
+
+## MCMC vs VI
+
+* VI tends to be faster, more scalable to large datasets and more complex models.
+    * uses an optimization approach to find the approximated posterior density that minimizes the KL-divergence.
+* MCMC is more computationaly intensive, but also provides guarantees of producing asymptotically exact samples from the target density.
+    * uses a sampling approach to sample from the target posterior density.
+    
+## Geometry of the posterior distribution
+
+* Dataset size is not the only reason we use VI.
+* Gibbs Sampling (one of MCMC methods) is a powerful approach to sample from a non-multiplle-modal distribution as it quickly focuses on one of the modes.
+* So, for models like mixture models with multiple modes, VI may perform better even for small datasets.
+* Comparing model complexity and inference between VI and MCMC is an exciting area for future research.
+
+## Accuracy
+
+* Exact accuracy of VI method is not known. 
+* But we do know that VI in generally underestimates the variance of the posterior density (as a consequence of minimizing KL-divergence).
+    * However, depending on the task this underestimation could not be so troublesome.
+    
+## Futher directions for VI
+
+* Use improved optimization methods for solving equation above (subject to local minima).
+* Developing generic VI algorithm that are easy to apply to a wide class of models.
+* Increasing the accuracy of VI
+
+        
+## KL-Divergence
+
+By definition,
+$$KL(q(\textbf{z}) ||p(\textbf{z|x})) = \mathbb{E}[\text{log }q(\textbf{z})] - \mathbb{E}[\text{log }p(\textbf{z|x})] $$ 
+where all expectations are with respect to $q(\textbf{z})$, leading to
+$$KL(q(\textbf{z}) ||p(\textbf{z|x})) = \mathbb{E}[\text{log }q(\textbf{z})] - \mathbb{E}[\text{log }p(\textbf{z,x})] + \text{log } p(\textbf{x}) $$
+Define
+$$ELBO(q) = \mathbb{E}[\text{log }p(\textbf{z,x})] - \mathbb{E}[\text{log }q(\textbf{z})] $$
+By above equation, maximizing the ELBO (Evidence Lower Bound) is equivalent to minimizing the KL-divergence since $\text{log} p(\textbf{x})$ is constant with respect to $q(\textbf{z})$.
+
+* Note: the ELBO lower-bounds the (log) evidence, i.e. $\text{log } p(\textbf{x}) \geq ELBO(q)$ for any $q(\textbf{z})$.
+
+## Mean-Field Variational Family
+
+* We must specify a family $Q$ of variational distributions to approximate the posterior with.
+* The complexity of this family determines the complexity of optimizing KL-divergence/ELBO.
+* The **mean-field variational family** is where the latent variables are mutually independent, each governed by a distinct variational factor $q(z_j)$.
+* i.e. a generic member of the mean-field variational family is:
+  $$q(\textbf{z}) = \Pi_{j=1}^m q_j(z_j)$$
+  * Each latent variable $z_j$ is goverend by its own variational factor, $q(z_j)$.
+  * Note: we are not assuming that the model actually comes from these distributions. We are making a simple distributional family assumption to make the optimization easier.
+
+# Algorithms
+
+## Coordinate Ascent Variational Inference (CAVI)
+
+* One of the most common/simplest algorithms for solving the ELBO optimization problem.
+* CAVI iteratively optimizes each factor of the mean-field variational density, while holding others fixed.
+* Climbs the ELBO to a local optimum.
+* We optimize/update each variational factor according to the following rule:
+$$ q^*_j(z_j) \prop  $$

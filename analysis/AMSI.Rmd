@@ -27,7 +27,7 @@ This page documents my progress for the research project **'Variaitonal Inferenc
 
 ## VI NMF
 
-* [Variational Inference: A Review for Statisticians]
+* [Variational Inference: A Review for Statisticians](vi_review_summary.html) - Introduction to Variational Inference (CAVI and SVI).
 
 
 ## Exponential Family

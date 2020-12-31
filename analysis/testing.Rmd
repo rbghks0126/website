@@ -1,6 +1,6 @@
 ---
 title: "testing"
-author: "GyuHwan Park"
+author: "Gyu Hwan Park"
 date: "30 December 2020"
 output: html_document
 ---
@@ -30,5 +30,6 @@ We model the observed data using a mixture of three binomial distributions. We a
 We aim to obtain MLE of parameters $\theta = (\pi_1, \pi_2, p_1, p_2, p_3)$ using the EM algorithm.
 
 
-#### (a) Derive the expectation of the complete log-likelihood.
+## testin subsection.
 
+# Test section 2
