@@ -13,7 +13,7 @@
 
 <meta name="date" content="2020-12-30" />
 
-<title>testing</title>
+<title>Variational Inference: Review - Summary</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -402,7 +402,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">testing</h1>
+<h1 class="title toc-ignore">Variational Inference: Review - Summary</h1>
 <h4 class="author">Gyu Hwan Park</h4>
 <h4 class="date">30 December 2020</h4>
 
@@ -552,7 +552,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/testing.Rmd</code>) and HTML (<code>docs/testing.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/vi_review_summary.Rmd</code>) and HTML (<code>docs/vi_review_summary.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -581,7 +581,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/rbghks0126/website/blob/a3b2007956ba63814da2fbb8cf124ff72b0b20f3/analysis/testing.Rmd" target="_blank">a3b2007</a>
+<a href="https://github.com/rbghks0126/website/blob/a3b2007956ba63814da2fbb8cf124ff72b0b20f3/analysis/vi_review_summary.Rmd" target="_blank">a3b2007</a>
 </td>
 <td>
 rbghks0126
@@ -593,57 +593,6 @@ rbghks0126
 Add VI review summary
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rbghks0126/website/fed82ddb409b909419fdebb76f6ee87d783a2696/docs/testing.html" target="_blank">fed82dd</a>
-</td>
-<td>
-rbghks0126
-</td>
-<td>
-2020-12-30
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rbghks0126/website/0c2d9b64fcf16872558bf2b732b9f67bf9cfccf2/docs/testing.html" target="_blank">0c2d9b6</a>
-</td>
-<td>
-rbghks0126
-</td>
-<td>
-2020-12-30
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rbghks0126/website/blob/d7ebaef68aff865de71efaf1a6dc3d2aa4a0a539/analysis/testing.Rmd" target="_blank">d7ebaef</a>
-</td>
-<td>
-rbghks0126
-</td>
-<td>
-2020-12-30
-</td>
-<td>
-testing links
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -651,26 +600,96 @@ testing links
 </div>
 </div>
 </div>
-<div id="testing" class="section level1">
-<h1>Testing</h1>
-<p>We model the observed data using a mixture of three binomial distributions. We assume the observations <span class="math inline">\(X_1, X_2,..., X_{300}\)</span> are independent to each other, and each <span class="math inline">\(X_i\)</span> follows this mixture model:, <span class="math display">\[
-    Z_i \sim \mbox{categorical }(\pi_1, \pi_2, 1-\pi_1-\pi_2),
-    \]</span> <span class="math display">\[
-    \begin{aligned}
-    X_i | Z_i = 1 &amp;\sim \mbox{Binomial}(20, p_1),\\
-    X_i | Z_i = 2 &amp;\sim \mbox{Binomial}(20, p_2),\\
-    X_i | Z_i = 3 &amp;\sim \mbox{Binomial}(20, p_3).
-    \end{aligned}
-    \]</span> The binomial distribution has probability mass function (for fixed 20 trials): <span class="math display">\[
-    f(x;p) = {20\choose x} p^x (1-p)^{20-x}.
-    \]</span></p>
-<p>We aim to obtain MLE of parameters <span class="math inline">\(\theta = (\pi_1, \pi_2, p_1, p_2, p_3)\)</span> using the EM algorithm.</p>
-<div id="testin-subsection." class="section level2">
-<h2>testin subsection.</h2>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<ul>
+<li>Core problem in modern Bayesian Statistics is to approximate difficult-to-compute (often intractable) probability densities (posterior).</li>
+<li>Traditionally, we have used Markov Chain Monte Carlo (MCMC) sampling methods, which constructs an ergodic Markov chain on the latent variables <span class="math inline">\(\textbf{z}\)</span> whose stationary distribution is the posterior <span class="math inline">\(p(\textbf{z}|\textbf{x})\)</span>.</li>
+</ul>
+</div>
+<div id="variational-inference" class="section level1">
+<h1>Variational Inference</h1>
+<ul>
+<li><strong>Variational Inference</strong> (VI) is a method from Machine Learning that aims to approximate probability densities.
+<ul>
+<li>VI is used in Bayesian Statistics to approximate the posterior densities, as an alternative to traditional MCMC.
+<ol style="list-style-type: decimal">
+<li>Posit a <strong>family</strong> of approximate densities Q.</li>
+<li>Find a member of this family that minimizes the <strong>Kullback-Leiber (KL) divergence</strong> to the exact posterior. <span class="math display">\[q^*(\textbf{z}) = \text{argmin}_{q(\textbf{z}) \in Q} \: KL(q(\textbf{z}) || p(\textbf{z}|\textbf{x}))\]</span></li>
+</ol></li>
+</ul></li>
+</ul>
+<div id="mcmc-vs-vi" class="section level2">
+<h2>MCMC vs VI</h2>
+<ul>
+<li>VI tends to be faster, more scalable to large datasets and more complex models.
+<ul>
+<li>uses an optimization approach to find the approximated posterior density that minimizes the KL-divergence.</li>
+</ul></li>
+<li>MCMC is more computationaly intensive, but also provides guarantees of producing asymptotically exact samples from the target density.
+<ul>
+<li>uses a sampling approach to sample from the target posterior density.</li>
+</ul></li>
+</ul>
+</div>
+<div id="geometry-of-the-posterior-distribution" class="section level2">
+<h2>Geometry of the posterior distribution</h2>
+<ul>
+<li>Dataset size is not the only reason we use VI.</li>
+<li>Gibbs Sampling (one of MCMC methods) is a powerful approach to sample from a non-multiplle-modal distribution as it quickly focuses on one of the modes.</li>
+<li>So, for models like mixture models with multiple modes, VI may perform better even for small datasets.</li>
+<li>Comparing model complexity and inference between VI and MCMC is an exciting area for future research.</li>
+</ul>
+</div>
+<div id="accuracy" class="section level2">
+<h2>Accuracy</h2>
+<ul>
+<li>Exact accuracy of VI method is not known.</li>
+<li>But we do know that VI in generally underestimates the variance of the posterior density (as a consequence of minimizing KL-divergence).
+<ul>
+<li>However, depending on the task this underestimation could not be so troublesome.</li>
+</ul></li>
+</ul>
+</div>
+<div id="futher-directions-for-vi" class="section level2">
+<h2>Futher directions for VI</h2>
+<ul>
+<li>Use improved optimization methods for solving equation above (subject to local minima).</li>
+<li>Developing generic VI algorithm that are easy to apply to a wide class of models.</li>
+<li>Increasing the accuracy of VI</li>
+</ul>
+</div>
+<div id="kl-divergence" class="section level2">
+<h2>KL-Divergence</h2>
+<p>By definition, <span class="math display">\[KL(q(\textbf{z}) ||p(\textbf{z|x})) = \mathbb{E}[\text{log }q(\textbf{z})] - \mathbb{E}[\text{log }p(\textbf{z|x})] \]</span> where all expectations are with respect to <span class="math inline">\(q(\textbf{z})\)</span>, leading to <span class="math display">\[KL(q(\textbf{z}) ||p(\textbf{z|x})) = \mathbb{E}[\text{log }q(\textbf{z})] - \mathbb{E}[\text{log }p(\textbf{z,x})] + \text{log } p(\textbf{x}) \]</span> Define <span class="math display">\[ELBO(q) = \mathbb{E}[\text{log }p(\textbf{z,x})] - \mathbb{E}[\text{log }q(\textbf{z})] \]</span> By above equation, maximizing the ELBO (Evidence Lower Bound) is equivalent to minimizing the KL-divergence since <span class="math inline">\(\text{log} p(\textbf{x})\)</span> is constant with respect to <span class="math inline">\(q(\textbf{z})\)</span>.</p>
+<ul>
+<li>Note: the ELBO lower-bounds the (log) evidence, i.e. <span class="math inline">\(\text{log } p(\textbf{x}) \geq ELBO(q)\)</span> for any <span class="math inline">\(q(\textbf{z})\)</span>.</li>
+</ul>
+</div>
+<div id="mean-field-variational-family" class="section level2">
+<h2>Mean-Field Variational Family</h2>
+<ul>
+<li>We must specify a family <span class="math inline">\(Q\)</span> of variational distributions to approximate the posterior with.</li>
+<li>The complexity of this family determines the complexity of optimizing KL-divergence/ELBO.</li>
+<li>The <strong>mean-field variational family</strong> is where the latent variables are mutually independent, each governed by a distinct variational factor <span class="math inline">\(q(z_j)\)</span>.</li>
+<li>i.e. a generic member of the mean-field variational family is: <span class="math display">\[q(\textbf{z}) = \Pi_{j=1}^m q_j(z_j)\]</span>
+<ul>
+<li>Each latent variable <span class="math inline">\(z_j\)</span> is goverend by its own variational factor, <span class="math inline">\(q(z_j)\)</span>.</li>
+<li>Note: we are not assuming that the model actually comes from these distributions. We are making a simple distributional family assumption to make the optimization easier.</li>
+</ul></li>
+</ul>
 </div>
 </div>
-<div id="test-section-2" class="section level1">
-<h1>Test section 2</h1>
+<div id="algorithms" class="section level1">
+<h1>Algorithms</h1>
+<div id="coordinate-ascent-variational-inference-cavi" class="section level2">
+<h2>Coordinate Ascent Variational Inference (CAVI)</h2>
+<ul>
+<li>One of the most common/simplest algorithms for solving the ELBO optimization problem.</li>
+<li>CAVI iteratively optimizes each factor of the mean-field variational density, while holding others fixed.</li>
+<li>Climbs the ELBO to a local optimum.</li>
+<li>We optimize/update each variational factor according to the following rule: <span class="math display">\[ q^*_j(z_j) \prop  \]</span></li>
+</ul>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -706,6 +725,7 @@ loaded via a namespace (and not attached):
 [21] vctrs_0.3.5     promises_1.1.1  fs_1.5.0        glue_1.4.2     
 [25] evaluate_0.14   rmarkdown_2.6   stringi_1.5.3   compiler_4.0.2 
 [29] pillar_1.4.7    httpuv_1.5.4    pkgconfig_2.0.3</code></pre>
+</div>
 </div>
 </div>
 
