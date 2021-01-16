@@ -7,7 +7,7 @@ output: html_document
 
 # Project Description
 
-This page documents my progress for the research project **'Variaitonal Inference for Bayesian Nonnegative Matrix Factorization'**. This research project was carried out under the AMSI Vacation Scholarship Program, supervised by Dr. Heejung Shim at the University of Melbourne.
+This page documents my progress for the research project **'Variaitonal Inference for Bayesian Nonnegative Matrix Factorization'**. This research project is carried out under the AMSI Vacation Scholarship Program, supervised by Dr. Heejung Shim at the University of Melbourne.
 
 # Outline
 
@@ -16,7 +16,13 @@ This page documents my progress for the research project **'Variaitonal Inferenc
 
 # Derivations
 
-* Coming soon
+* [Laplace Approximation Variational Inference (LAVI)](assets/LAVI_BP-NMF.pdf) - Detailed derivation of the variational factors' updates for BP-NMF (one sparsity matrix) by [Liang et al (2013)](https://www.semanticscholar.org/paper/Beta-Process-Sparse-Nonnegative-Matrix-for-Music-Liang-Hoffman/9ca3a99a33d3275837488e7558cb93bb387ea9cf).
+
+* [Doubly Structured Stochastic Variational Inference (DSSVI) for BP-NMF](assets/DSSVI.pdf) - [Extension of Hoffman and Liang (2014)](https://arxiv.org/abs/1411.1804), where an additional sparsity matrix has been added to enforce sparsity in the first factored matrix as well.
+
+* [Gibbs Sampling version of DSSVI BP-NMF](assets/gibbs_DSSVI.pdf)
+
+* [Doubly sparse LAVI](assets/doubly_sparse_LAVI.pdf) - Derivation of variational factors' updates for doubly sparse BP-NMF. An extension of LAVI for BP-NMF.
 
 # Implementation
 
