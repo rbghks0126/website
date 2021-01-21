@@ -18,7 +18,7 @@ This page documents my progress for the research project **'Variaitonal Inferenc
 
 * [Laplace Approximation Variational Inference (LAVI)](assets/LAVI_BP-NMF.pdf) - Detailed derivation of the variational factors' updates for BP-NMF (one sparsity matrix) by [Liang et al (2013)](https://www.semanticscholar.org/paper/Beta-Process-Sparse-Nonnegative-Matrix-for-Music-Liang-Hoffman/9ca3a99a33d3275837488e7558cb93bb387ea9cf).
 
-* [Doubly Structured Stochastic Variational Inference (DSSVI) for BP-NMF](assets/DSSVI.pdf) - [Extension of Hoffman and Liang (2014)](https://arxiv.org/abs/1411.1804), where an additional sparsity matrix has been added to enforce sparsity in the first factored matrix as well.
+* [Doubly Structured Stochastic Variational Inference (DSSVI) for BP-NMF](assets/DSSVI.pdf) - Extension of [Hoffman and Liang (2014)](https://arxiv.org/abs/1411.1804), where an additional sparsity matrix has been added to enforce sparsity in the first factored matrix as well.
 
 * [Gibbs Sampling version of DSSVI BP-NMF](assets/gibbs_DSSVI.pdf)
 
@@ -26,7 +26,8 @@ This page documents my progress for the research project **'Variaitonal Inferenc
 
 # Implementation
 
-* Coming soon
+* [Python implementation of DSSVI algorithm](assets/dssvi_fn.py) - Based on the implementation by [Liang](https://github.com/dawenl/bp_nmf/tree/master/code/ssmf).
+* [Simulation 1: non-overlapping clusters in X](assets/01_19_sim_check_real.pdf).
 
 
 # Paper Summaries
