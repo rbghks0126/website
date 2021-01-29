@@ -24,11 +24,14 @@ This page documents my progress for the research project **'Variaitonal Inferenc
 
 * [Doubly sparse LAVI](assets/doubly_sparse_LAVI.pdf) - Derivation of variational factors' updates for doubly sparse BP-NMF. An extension of LAVI for BP-NMF.
 
-# Implementation
+# Implementation / Simulations
 
 * [Python implementation of DSSVI algorithm](assets/dssvi_fn.py) - Based on the implementation by [Liang](https://github.com/dawenl/bp_nmf/tree/master/code/ssmf).
 * [Simulation 1: non-overlapping clusters in X](assets/01_19_sim_check_real.pdf).
-
+* [DSSVI and SSVI Comparison 1](assets/dssvi_ssvi_both sparse_sameK.html) - Both Sparse Matrices & same K across runs.
+* [DSSVI and SSVI Comparison 2](assets/dssvi_ssvi_one sparse_sameK.html) - One Sparse Matrix & same K across runs.
+* [DSSVI and SSVI Comparison 3](assets/dssvi_ssvi_both sparse_diffK.html) - Both Sparse Matrices & different K across runs.
+* [DSSVI and SSVI Comparison 4](assets/dssvi_ssvi_one sparse_diffK.html) - One Sparse Matrix & different K across runs.
 
 # Paper Summaries
 
