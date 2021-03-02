@@ -32,6 +32,12 @@ This page documents my progress for the research project **'Variaitonal Inferenc
 * [DSSVI and SSVI Comparison 2](assets/dssvi_ssvi_one sparse_sameK.html) - One Sparse Matrix & same K across runs.
 * [DSSVI and SSVI Comparison 3](assets/dssvi_ssvi_both sparse_diffK.html) - Both Sparse Matrices & different K across runs.
 * [DSSVI and SSVI Comparison 4](assets/dssvi_ssvi_one sparse_diffK.html) - One Sparse Matrix & different K across runs.
+* Visit my [github repository](https://github.com/rbghks0126/DS-NMF-with-SSVI) for final implementation, report (including derivations) and powerpoint slides.
+
+# Final report
+* [AMSI report](assets/final_report.pdf)
+* [AMSI connect presentation](assets/amsi_connect_presentation.pdf)
+
 
 # Paper Summaries
 
