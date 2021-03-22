@@ -5,8 +5,8 @@ navbar:
   left:
   - text: Home
     href: index.html
-  - text: About
-    href: about.html
+  - text: NMF
+    href: NMF.html
   - text: AMSI
     href: AMSI.html
   - text: License
