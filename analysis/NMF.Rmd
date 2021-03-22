@@ -1,0 +1,22 @@
+---
+title: "NMF"
+output:
+  workflowr::wflow_html:
+    toc: false
+editor_options:
+  chunk_output_type: console
+---
+
+# To Do Lists
+
+## 22/3/2021
+### For me
+* Check predictive log-likelihood for LAVI and CoGAPS.
+* Look at the 2 real datasets from [Doubly Nonparametric Sparse Nonnegative Matrix Factorization Based on Dependent Indian Buffet Processes, Xuan et al (2018)](https://ieeexplore.ieee.org/document/7896614) and [Bayesian Nonnegative Matrix Factorization With Dirichlet Process Mixtures, Li et al (2020)](https://ieeexplore.ieee.org/document/9121775).
+  * Try understand how they used these datasets and produced results.
+  * Try see if I can apply my algorithm to these datasets.
+  
+  
+
+### For HJ
+* Check (email) implementation for [Doubly Nonparametric Sparse Nonnegative Matrix Factorization Based on Dependent Indian Buffet Processes, Xuan et al (2018)](https://ieeexplore.ieee.org/document/7896614) and [Bayesian Nonnegative Matrix Factorization With Dirichlet Process Mixtures, Li et al (2020)](https://ieeexplore.ieee.org/document/9121775).
