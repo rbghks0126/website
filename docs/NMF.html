@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Gyu Hwan Park" />
 
-<meta name="date" content="2020-12-30" />
 
-<title>testing</title>
+<title>NMF</title>
 
 <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -22,9 +20,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -276,69 +271,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -346,16 +278,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -402,9 +324,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">testing</h1>
-<h4 class="author">Gyu Hwan Park</h4>
-<h4 class="date">30 December 2020</h4>
+<h1 class="title toc-ignore">NMF</h1>
 
 </div>
 
@@ -432,7 +352,7 @@ div.tocify {
 <strong>Last updated:</strong> 2021-03-22
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>website/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -454,66 +374,6 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
 <p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
-</p>
-</div>
-<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
-<div class="panel-body">
-<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20201230code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20201230)</code> </a>
-</p>
-</div>
-<div id="strongSeedstrongcodesetseed20201230code" class="panel-collapse collapse">
-<div class="panel-body">
-<p>The command <code>set.seed(20201230)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
-</p>
-</div>
-<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
-<div class="panel-body">
-<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
-</p>
-</div>
-<div id="strongCachestrongnone" class="panel-collapse collapse">
-<div class="panel-body">
-<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
-</p>
-</div>
-<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
-<div class="panel-body">
-<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -555,7 +415,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/testing.Rmd</code>) and HTML (<code>docs/testing.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/NMF.Rmd</code>) and HTML (<code>docs/NMF.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -581,87 +441,19 @@ Message
 <tbody>
 <tr>
 <td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rbghks0126/website/45b8de2d87f3786f412ab578c54df01898b4ff89/docs/testing.html" target="_blank">45b8de2</a>
-</td>
-<td>
-rbghks0126
-</td>
-<td>
-2020-12-31
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
 Rmd
 </td>
 <td>
-<a href="https://github.com/rbghks0126/website/blob/a3b2007956ba63814da2fbb8cf124ff72b0b20f3/analysis/testing.Rmd" target="_blank">a3b2007</a>
+<a href="https://github.com/rbghks0126/website/blob/eda95eb59b547c440cc9e4b8560ffb2d6eccf5cd/analysis/NMF.Rmd" target="_blank">eda95eb</a>
 </td>
 <td>
 rbghks0126
 </td>
 <td>
-2020-12-31
+2021-03-22
 </td>
 <td>
-Add VI review summary
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rbghks0126/website/fed82ddb409b909419fdebb76f6ee87d783a2696/docs/testing.html" target="_blank">fed82dd</a>
-</td>
-<td>
-rbghks0126
-</td>
-<td>
-2020-12-30
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/rbghks0126/website/0c2d9b64fcf16872558bf2b732b9f67bf9cfccf2/docs/testing.html" target="_blank">0c2d9b6</a>
-</td>
-<td>
-rbghks0126
-</td>
-<td>
-2020-12-30
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/rbghks0126/website/blob/d7ebaef68aff865de71efaf1a6dc3d2aa4a0a539/analysis/testing.Rmd" target="_blank">d7ebaef</a>
-</td>
-<td>
-rbghks0126
-</td>
-<td>
-2020-12-30
-</td>
-<td>
-testing links
+Add NMF page
 </td>
 </tr>
 </tbody>
@@ -671,61 +463,27 @@ testing links
 </div>
 </div>
 </div>
-<div id="testing" class="section level1">
-<h1>Testing</h1>
-<p>We model the observed data using a mixture of three binomial distributions. We assume the observations <span class="math inline">\(X_1, X_2,..., X_{300}\)</span> are independent to each other, and each <span class="math inline">\(X_i\)</span> follows this mixture model:, <span class="math display">\[
-    Z_i \sim \mbox{categorical }(\pi_1, \pi_2, 1-\pi_1-\pi_2),
-    \]</span> <span class="math display">\[
-    \begin{aligned}
-    X_i | Z_i = 1 &amp;\sim \mbox{Binomial}(20, p_1),\\
-    X_i | Z_i = 2 &amp;\sim \mbox{Binomial}(20, p_2),\\
-    X_i | Z_i = 3 &amp;\sim \mbox{Binomial}(20, p_3).
-    \end{aligned}
-    \]</span> The binomial distribution has probability mass function (for fixed 20 trials): <span class="math display">\[
-    f(x;p) = {20\choose x} p^x (1-p)^{20-x}.
-    \]</span></p>
-<p>We aim to obtain MLE of parameters <span class="math inline">\(\theta = (\pi_1, \pi_2, p_1, p_2, p_3)\)</span> using the EM algorithm.</p>
-<div id="testin-subsection." class="section level2">
-<h2>testin subsection.</h2>
+<div id="to-do-lists" class="section level1">
+<h1>To Do Lists</h1>
+<div id="section" class="section level2">
+<h2>22/3/2021</h2>
+<div id="for-me" class="section level3">
+<h3>For me</h3>
+<ul>
+<li>Check predictive log-likelihood for LAVI and CoGAPS.</li>
+<li>Look at the 2 real datasets from <a href="https://ieeexplore.ieee.org/document/7896614">Doubly Nonparametric Sparse Nonnegative Matrix Factorization Based on Dependent Indian Buffet Processes, Xuan et al (2018)</a> and <a href="https://ieeexplore.ieee.org/document/9121775">Bayesian Nonnegative Matrix Factorization With Dirichlet Process Mixtures, Li et al (2020)</a>.
+<ul>
+<li>Try understand how they used these datasets and produced results.</li>
+<li>Try see if I can apply my algorithm to these datasets.</li>
+</ul></li>
+</ul>
 </div>
+<div id="for-hj" class="section level3">
+<h3>For HJ</h3>
+<ul>
+<li>Check (email) implementation for <a href="https://ieeexplore.ieee.org/document/7896614">Doubly Nonparametric Sparse Nonnegative Matrix Factorization Based on Dependent Indian Buffet Processes, Xuan et al (2018)</a> and <a href="https://ieeexplore.ieee.org/document/9121775">Bayesian Nonnegative Matrix Factorization With Dirichlet Process Mixtures, Li et al (2020)</a>.</li>
+</ul>
 </div>
-<div id="test-section-2" class="section level1">
-<h1>Test section 2</h1>
-<br>
-<p>
-<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
-<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
-</button>
-</p>
-<div id="workflowr-sessioninfo" class="collapse">
-<pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.0.2 (2020-06-22)
-Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows 10 x64 (build 19041)
-
-Matrix products: default
-
-locale:
-[1] LC_COLLATE=English_Australia.1252  LC_CTYPE=English_Australia.1252   
-[3] LC_MONETARY=English_Australia.1252 LC_NUMERIC=C                      
-[5] LC_TIME=English_Australia.1252    
-system code page: 949
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] workflowr_1.6.2
-
-loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5      rstudioapi_0.13 whisker_0.4     knitr_1.30     
- [5] magrittr_2.0.1  R6_2.5.0        rlang_0.4.10    stringr_1.4.0  
- [9] tools_4.0.2     xfun_0.20       git2r_0.27.1    htmltools_0.5.0
-[13] ellipsis_0.3.1  rprojroot_2.0.2 yaml_2.2.1      digest_0.6.27  
-[17] tibble_3.0.4    lifecycle_0.2.0 crayon_1.3.4    later_1.1.0.1  
-[21] vctrs_0.3.6     promises_1.1.1  fs_1.5.0        glue_1.4.2     
-[25] evaluate_0.14   rmarkdown_2.6   stringi_1.5.3   compiler_4.0.2 
-[29] pillar_1.4.7    httpuv_1.5.4    pkgconfig_2.0.3</code></pre>
 </div>
 </div>
 
@@ -745,8 +503,6 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -779,32 +535,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
