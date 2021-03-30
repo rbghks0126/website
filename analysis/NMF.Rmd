@@ -9,6 +9,15 @@ editor_options:
 
 # To Do Lists
 
+## 30/3/2021
+- Apply my DS-SSVI NMF (and gibbs sampling version too) on audio data for blind source separation. (testing the second factored matrix)
+  - Compare the separation performance with:
+    - BETA PROCESS SPARSE NONNEGATIVE MATRIX FACTORIZATION FOR MUSIC, Liang et al. (2013) 
+    - Beta Process Non-negative Matrix Factorization with Stochastic Structured Mean-Field Variational Inference, Liang et al. (2014)
+  
+
+
+
 ## 22/3/2021
 ### For me
 * Check predictive log-likelihood for LAVI and CoGAPS.
