@@ -6,10 +6,24 @@ output:
 editor_options:
   chunk_output_type: console
 ---
-
 # To Do Lists
 
-## 30/3/2021
+# 4/5/2021
+- See if the implementation has functionality for returning the second factored matrix.
+- Perform signature matching on BRCA100 data using their algorithm.
+- Perform signature matching on BRCA100 data using my DS-SSVI and DS-Gibbs.
+
+# 16/4/2021
+- Find software/github implementation for [Deciphering Signatures of Mutational Processes Operative in Human Cance](https://pubmed.ncbi.nlm.nih.gov/23318258/).
+  - See if they have some procedure for generating the data matrix for cancer mutation type and signatures (latent components).
+  
+- FOUND: 
+  - https://osf.io/zyknf/ (original authors')
+  
+  - Github: https://github.com/ShixiangWang/sigminer (another person's)
+    - Tutorial: https://shixiangwang.gitee.io/sigminer-doc/sbssig.html#extract-signatures
+
+# 30/3/2021
 - Apply my DS-SSVI NMF (and gibbs sampling version too) on audio data for blind source separation. (testing the second factored matrix)
   - Compare the separation performance with:
     - BETA PROCESS SPARSE NONNEGATIVE MATRIX FACTORIZATION FOR MUSIC, Liang et al. (2013) 
@@ -18,8 +32,8 @@ editor_options:
 
 
 
-## 22/3/2021
-### For me
+# 22/3/2021
+## For me
 * Check predictive log-likelihood for LAVI and CoGAPS.
 * Look at the 2 real datasets from [Doubly Nonparametric Sparse Nonnegative Matrix Factorization Based on Dependent Indian Buffet Processes, Xuan et al (2018)](https://ieeexplore.ieee.org/document/7896614) and [Bayesian Nonnegative Matrix Factorization With Dirichlet Process Mixtures, Li et al (2020)](https://ieeexplore.ieee.org/document/9121775).
   * Try understand how they used these datasets and produced results.
@@ -27,5 +41,5 @@ editor_options:
   
   
 
-### For HJ
+## For HJ
 * Check (email) implementation for [Doubly Nonparametric Sparse Nonnegative Matrix Factorization Based on Dependent Indian Buffet Processes, Xuan et al (2018)](https://ieeexplore.ieee.org/document/7896614) and [Bayesian Nonnegative Matrix Factorization With Dirichlet Process Mixtures, Li et al (2020)](https://ieeexplore.ieee.org/document/9121775).
