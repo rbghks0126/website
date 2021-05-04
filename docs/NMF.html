@@ -13,13 +13,22 @@
 
 <title>NMF</title>
 
-<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -46,11 +55,6 @@ div.section {
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -63,32 +67,6 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
 
 
@@ -99,10 +77,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -119,40 +93,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -180,7 +127,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -192,7 +139,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -203,10 +150,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -218,7 +178,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -320,7 +279,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -349,7 +308,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-03-30
+<strong>Last updated:</strong> 2021-05-04
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -380,16 +339,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrbghks0126websitetree48132296fbd55089ee55e64320f8943f4072aa3ftargetblank4813229a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rbghks0126/website/tree/48132296fbd55089ee55e64320f8943f4072aa3f" target="_blank">4813229</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomrbghks0126websitetreee345579c46bec5b317d6717e6414c01932471f55targetblanke345579a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/rbghks0126/website/tree/e345579c46bec5b317d6717e6414c01932471f55" target="_blank">e345579</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomrbghks0126websitetree48132296fbd55089ee55e64320f8943f4072aa3ftargetblank4813229a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomrbghks0126websitetreee345579c46bec5b317d6717e6414c01932471f55targetblanke345579a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/rbghks0126/website/tree/48132296fbd55089ee55e64320f8943f4072aa3f" target="_blank">4813229</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/rbghks0126/website/tree/e345579c46bec5b317d6717e6414c01932471f55" target="_blank">e345579</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -439,6 +398,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/rbghks0126/website/blob/e345579c46bec5b317d6717e6414c01932471f55/analysis/NMF.Rmd" target="_blank">e345579</a>
+</td>
+<td>
+rbghks0126
+</td>
+<td>
+2021-05-04
+</td>
+<td>
+update To Do
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/rbghks0126/website/8600d235313ff37d377659f40281479f729b13e1/docs/NMF.html" target="_blank">8600d23</a>
+</td>
+<td>
+rbghks0126
+</td>
+<td>
+2021-03-30
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -516,8 +509,34 @@ Add NMF page
 </div>
 <div id="to-do-lists" class="section level1">
 <h1>To Do Lists</h1>
-<div id="section" class="section level2">
-<h2>30/3/2021</h2>
+</div>
+<div id="section" class="section level1">
+<h1>4/5/2021</h1>
+<ul>
+<li>See if the implementation has functionality for returning the second factored matrix.</li>
+<li>Perform signature matching on BRCA100 data using their algorithm.</li>
+<li>Perform signature matching on BRCA100 data using my DS-SSVI and DS-Gibbs.</li>
+</ul>
+</div>
+<div id="section-1" class="section level1">
+<h1>16/4/2021</h1>
+<ul>
+<li>Find software/github implementation for <a href="https://pubmed.ncbi.nlm.nih.gov/23318258/">Deciphering Signatures of Mutational Processes Operative in Human Cance</a>.
+<ul>
+<li>See if they have some procedure for generating the data matrix for cancer mutation type and signatures (latent components).</li>
+</ul></li>
+<li>FOUND:
+<ul>
+<li><p><a href="https://osf.io/zyknf/" class="uri">https://osf.io/zyknf/</a> (original authors’)</p></li>
+<li><p>Github: <a href="https://github.com/ShixiangWang/sigminer" class="uri">https://github.com/ShixiangWang/sigminer</a> (another person’s)</p>
+<ul>
+<li>Tutorial: <a href="https://shixiangwang.gitee.io/sigminer-doc/sbssig.html#extract-signatures" class="uri">https://shixiangwang.gitee.io/sigminer-doc/sbssig.html#extract-signatures</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="section-2" class="section level1">
+<h1>30/3/2021</h1>
 <ul>
 <li>Apply my DS-SSVI NMF (and gibbs sampling version too) on audio data for blind source separation. (testing the second factored matrix)
 <ul>
@@ -529,10 +548,10 @@ Add NMF page
 </ul></li>
 </ul>
 </div>
-<div id="section-1" class="section level2">
-<h2>22/3/2021</h2>
-<div id="for-me" class="section level3">
-<h3>For me</h3>
+<div id="section-3" class="section level1">
+<h1>22/3/2021</h1>
+<div id="for-me" class="section level2">
+<h2>For me</h2>
 <ul>
 <li>Check predictive log-likelihood for LAVI and CoGAPS.</li>
 <li>Look at the 2 real datasets from <a href="https://ieeexplore.ieee.org/document/7896614">Doubly Nonparametric Sparse Nonnegative Matrix Factorization Based on Dependent Indian Buffet Processes, Xuan et al (2018)</a> and <a href="https://ieeexplore.ieee.org/document/9121775">Bayesian Nonnegative Matrix Factorization With Dirichlet Process Mixtures, Li et al (2020)</a>.
@@ -542,12 +561,11 @@ Add NMF page
 </ul></li>
 </ul>
 </div>
-<div id="for-hj" class="section level3">
-<h3>For HJ</h3>
+<div id="for-hj" class="section level2">
+<h2>For HJ</h2>
 <ul>
 <li>Check (email) implementation for <a href="https://ieeexplore.ieee.org/document/7896614">Doubly Nonparametric Sparse Nonnegative Matrix Factorization Based on Dependent Indian Buffet Processes, Xuan et al (2018)</a> and <a href="https://ieeexplore.ieee.org/document/9121775">Bayesian Nonnegative Matrix Factorization With Dirichlet Process Mixtures, Li et al (2020)</a>.</li>
 </ul>
-</div>
 </div>
 </div>
 
@@ -592,7 +610,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
